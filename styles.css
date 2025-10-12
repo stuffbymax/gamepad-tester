@@ -55,3 +55,76 @@ h1 {
     background: #61dafb;
     border-radius: 5px;
 }
+/* === Analog Stick Zones with Cross + Circles === */
+.analog-zone {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+    border: 2px solid #61dafb;
+    border-radius: 50%;
+    background: #20232a;
+    box-shadow: 0 0 10px rgba(97, 218, 251, 0.2);
+    overflow: hidden;
+}
+
+/* Crosshairs (horizontal + vertical lines) */
+.analog-zone::before,
+.analog-zone::after {
+    content: '';
+    position: absolute;
+    background: rgba(97, 218, 251, 0.3);
+    z-index: 0;
+}
+
+.analog-zone::before {
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.analog-zone::after {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+/* Inner guide circles */
+.analog-zone .ring {
+    position: absolute;
+    border: 1px solid rgba(97, 218, 251, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.analog-zone .ring:nth-child(1) {
+    width: 100px;
+    height: 100px;
+}
+
+.analog-zone .ring:nth-child(2) {
+    width: 60px;
+    height: 60px;
+}
+
+/* Analog stick (movable dot) */
+.analog-stick {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px; /* centers it */
+    margin-left: -15px;
+    background: #61dafb;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+    transition: transform 0.05s linear;
+    z-index: 1;
+}
